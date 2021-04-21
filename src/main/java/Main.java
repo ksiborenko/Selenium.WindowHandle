@@ -10,6 +10,7 @@ public class Main {
     private Action action;
     private WindowHandle windowHandle;
     private DragAndDrop dragAndDrop;
+    private Links links;
 
     @Before
     public void setup() {
@@ -18,6 +19,7 @@ public class Main {
         this.action = new Action(this.driver);
         this.windowHandle = new WindowHandle(this.driver);
         this.dragAndDrop = new DragAndDrop(this.driver);
+        this.links = new Links(this.driver);
     }
 
     @Test
@@ -30,8 +32,14 @@ public class Main {
         this.windowHandle.test();
         this.windowHandle.hero();
     }
+
     @Test
     public void dragAndDrop() {
         this.dragAndDrop.test();
+    }
+
+    @Test
+    public void links() {
+        this.links.test();
     }
 }
