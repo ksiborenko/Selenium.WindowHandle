@@ -25,4 +25,18 @@ public class WindowHandle {
         this.driver.switchTo().window(parent);
         this.driver.findElement(By.cssSelector("input[name='username']")).sendKeys(url);
     }
+
+    public void hero() {
+        this.driver.get("https://the-internet.herokuapp.com/windows");
+        this.driver.findElement(By.xpath("//a[@href='/windows/new']")).click();
+        Set<String> windows = this.driver.getWindowHandles();
+        Iterator<String> iterator = windows.iterator();
+        String parent = iterator.next();
+        String child = iterator.next();
+        this.driver.switchTo().window(child);
+        System.out.println(this.driver.findElement(By.xpath("//div[@class='example']//h3")).getText());
+        this.driver.close();
+        this.driver.switchTo().window(parent);
+        System.out.println(this.driver.findElement(By.xpath("//div[@class='example']//h3")).getText());
+    }
 }

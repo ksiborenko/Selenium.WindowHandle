@@ -9,6 +9,7 @@ public class Main {
     private WebDriver driver;
     private Action action;
     private WindowHandle windowHandle;
+    private DragAndDrop dragAndDrop;
 
     @Before
     public void setup() {
@@ -16,6 +17,7 @@ public class Main {
         this.driver = new EdgeDriver();
         this.action = new Action(this.driver);
         this.windowHandle = new WindowHandle(this.driver);
+        this.dragAndDrop = new DragAndDrop(this.driver);
     }
 
     @Test
@@ -26,5 +28,10 @@ public class Main {
     @Test
     public void windowHandle() {
         this.windowHandle.test();
+        this.windowHandle.hero();
+    }
+    @Test
+    public void dragAndDrop() {
+        this.dragAndDrop.test();
     }
 }
