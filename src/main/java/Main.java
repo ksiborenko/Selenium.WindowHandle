@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +11,6 @@ public class Main {
     private Action action;
     private WindowHandle windowHandle;
     private DragAndDrop dragAndDrop;
-    private Links links;
 
     @Before
     public void setup() {
@@ -19,7 +19,6 @@ public class Main {
         this.action = new Action(this.driver);
         this.windowHandle = new WindowHandle(this.driver);
         this.dragAndDrop = new DragAndDrop(this.driver);
-        this.links = new Links(this.driver);
     }
 
     @Test
@@ -38,8 +37,8 @@ public class Main {
         this.dragAndDrop.test();
     }
 
-    @Test
-    public void links() {
-        this.links.test();
+    @After
+    public void end() {
+        this.driver.quit();
     }
 }
